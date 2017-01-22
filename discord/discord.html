@@ -8,7 +8,7 @@
         },
         inputs:0,
         outputs:1,
-        icon: "file.png",
+        icon: "discord.png",
         label: function() {
             return this.name||"discordMessage";
         }
@@ -31,7 +31,7 @@
     <p><code>msg.channel</code> will be set to the channelID of the channel the message was received on.</p>
     <p><code>msg.discord<code> will be set to the DiscordJS Client that received the message.</p>
     <p>To reply to a message with a @mention, use <code>msg.discord_message.reply('you rock!')</code></p>
-    <p>To reply to a message without a @mention, use <code>msg.discord_message.channel.send('you rock!')</code> or the <code>discordMessage</code> node.</p>
+    <p>To reply to a message without a @mention, use <code>msg.discord_message.channel.send('you rock!')</code> or the <code>discordSendMessage</code> node.</p>
 </script>
 
 
@@ -50,7 +50,7 @@
         },
         inputs:1,
         outputs:0,
-        icon: "file.png",
+        icon: "discord.png",
         label: function() {
             return this.name||"discordSendMessage";
         }
@@ -86,7 +86,7 @@
         },
         inputs: 1,
         outputs: 1,
-        icon: "file.png",
+        icon: "discord.png",
         label: function() {
             return this.name||"discordClient";
         }
