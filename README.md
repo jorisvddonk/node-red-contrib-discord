@@ -1,8 +1,12 @@
 # node-red-contrib-discord
 
-Noe-red nodes that allow you to interact with Discord.
+Node-red nodes that allow you to interact with Discord, via [Discord.js](https://discord.js.org).
 
 Currently, you can write simple request-reply bots with this.
+
+# Discord.js client sharing
+
+All nodes share Discord.js clients based on the `discord-token` that they were configured with. That means that, when you add many `discordMessage` nodes configured with the exact same token you add to your flow, only a single connection with Discord will be made.
 
 # Example bot
 
