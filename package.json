@@ -10,5 +10,10 @@
   "license": "MIT",
   "dependencies": {
     "discord.js": "^11.0.0"
+  },
+  "node-red": {
+      "nodes": {
+          "discord": "discord/discord.js"
+      }
   }
 }
