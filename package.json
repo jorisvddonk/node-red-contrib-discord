@@ -1,0 +1,14 @@
+{
+  "name": "node-red-contrib-discord",
+  "version": "1.0.0",
+  "description": "Node-RED node for interacting with Discord",
+  "main": "discord/discord.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Joris van de Donk <jorisvddonk@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^11.0.0"
+  }
+}

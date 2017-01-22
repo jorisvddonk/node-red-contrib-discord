@@ -1,0 +1,136 @@
+<script type="text/javascript">
+    RED.nodes.registerType('discordMessage',{
+        category: 'discord',
+        color: '#7289da',
+        defaults: {
+            name: {value: "", required: false},
+            token: {value: "", required: true, type: "discord-token"}
+        },
+        inputs:0,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"discordMessage";
+        }
+    });
+</script>
+<script type="text/x-red" data-template-name="discordMessage">
+    <div class="form-row">
+        <label for="node-input-token"><i class="icon-tag"></i> token</label>
+        <input type="text" id="node-input-token" placeholder="token">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+<script type="text/x-red" data-help-name="discordMessage">
+    <p>Triggers whenever a message was received on Discord.</p>
+    <p><code>msg.payload</code> will be set to the textual content of the message.</p>
+    <p><code>msg.discord_message</code> will be set to the actual message as received on Discord. It will be an instance of a <a href="https://discord.js.org/#/docs/main/stable/class/Message">Discord.js message</a>.</p>
+    <p><code>msg.channel</code> will be set to the channelID of the channel the message was received on.</p>
+    <p><code>msg.discord<code> will be set to the DiscordJS Client that received the message.</p>
+    <p>To reply to a message with a @mention, use <code>msg.discord_message.reply('you rock!')</code></p>
+    <p>To reply to a message without a @mention, use <code>msg.discord_message.channel.send('you rock!')</code> or the <code>discordMessage</code> node.</p>
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+    RED.nodes.registerType('discordSendMessage',{
+        category: 'discord',
+        color: '#7289da',
+        defaults: {
+            name: {value: "", required: false},
+            channel: {value: null, required: false},
+            token: {value: "", required: true, type: "discord-token"}
+        },
+        inputs:1,
+        outputs:0,
+        icon: "file.png",
+        label: function() {
+            return this.name||"discordSendMessage";
+        }
+    });
+</script>
+<script type="text/x-red" data-template-name="discordSendMessage">
+    <div class="form-row">
+        <label for="node-input-token"><i class="icon-tag"></i> token</label>
+        <input type="text" id="node-input-token" placeholder="token">
+    </div>
+    <div class="form-row">
+        <label for="node-input-channel"><i class="icon-tag"></i> channel ID</label>
+        <input type="text" id="node-input-channel" placeholder="channel">
+        <p>(leave 'channel ID' blank to use <code>msg.channel</code>)
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+<script type="text/x-red" data-help-name="discordSendMessage">
+    <p>Sends msg.payload on Discord channel with id <code>msg.channel</code></p>
+</script>
+
+
+<script type="text/javascript">
+    RED.nodes.registerType('discordClient',{
+        category: 'discord',
+        color: '#7289da',
+        defaults: {
+            name: {value: "", required: false},
+            token: {value: "", required: true, type: "discord-token"}
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"discordClient";
+        }
+    });
+</script>
+<script type="text/x-red" data-template-name="discordClient">
+    <div class="form-row">
+        <label for="node-input-token"><i class="icon-tag"></i> token</label>
+        <input type="text" id="node-input-token" placeholder="token">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+<script type="text/x-red" data-help-name="discordClient">
+    <p>Injects <code>discord<code> (a DiscordJS client) into the message stream.</p>
+</script>
+
+
+<script type="text/javascript">
+    RED.nodes.registerType('discord-token', {
+        category: 'config',
+        defaults: {
+            name: {value:"", required: true},
+        },
+        credentials: {
+            token: {type: "text"},
+        },
+        exportable: false,
+        label: function() {
+            return this.name;
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="discord-token">
+    <div class="form-row">
+        <label for="node-config-input-token"><i class="icon-bookmark"></i> Token</label>
+        <input type="text" id="node-config-input-token">
+        <p>You can find the Discord API token in <a href="https://discordapp.com/developers/applications">your developer page</a>.</p>
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-config-input-name">
+    </div>
+</script>
