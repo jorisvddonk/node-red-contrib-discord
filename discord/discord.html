@@ -29,7 +29,7 @@
     <p><code>msg.payload</code> will be set to the textual content of the message.</p>
     <p><code>msg.discord_message</code> will be set to the actual message as received on Discord. It will be an instance of a <a href="https://discord.js.org/#/docs/main/stable/class/Message">Discord.js message</a>.</p>
     <p><code>msg.channel</code> will be set to the channelID of the channel the message was received on.</p>
-    <p><code>msg.discord<code> will be set to the DiscordJS Client that received the message.</p>
+    <p><code>msg.discord</code> will be set to the Discord.js <a href="https://discord.js.org/#/docs/main/stable/class/Client">Client</a> that received the message.</p>
     <p>To reply to a message with a @mention, use <code>msg.discord_message.reply('you rock!')</code></p>
     <p>To reply to a message without a @mention, use <code>msg.discord_message.channel.send('you rock!')</code> or the <code>discordSendMessage</code> node.</p>
 </script>
@@ -103,8 +103,9 @@
     </div>
 </script>
 <script type="text/x-red" data-help-name="discordClient">
-    <p>Injects <code>discord<code> (a DiscordJS client) into the message stream.</p>
+    <p>Sets <code>msg.discord</code> to the Discord.js <a href="https://discord.js.org/#/docs/main/stable/class/Client">Client</a> associated with the configured token. Use this node to inject a Discord client into a message, which you can then perform actions on manually in nodes that follow.</p>
 </script>
+
 
 
 <script type="text/javascript">
