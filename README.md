@@ -8,10 +8,6 @@ Currently, you can write simple request-reply bots with this.
 
 All nodes share Discord.js clients based on the `discord-token` that they were configured with. That means that, when you add many `discordMessage` nodes configured with the exact same token, only a single connection with Discord will be made.
 
-# Error handling & status messages
-
-Currently, error handling is minimal, and no status messages are displayed in the node-red editor UI. When you think things aren't working correctly, check the node-red process output.
-
 # Example bot
 
 A simple Discord bot that replies with the reverse of any received message that contains the string 'hello':

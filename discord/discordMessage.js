@@ -14,7 +14,6 @@ module.exports = function(RED) {
                 bot.on(eventName, listener);
             }
             registerCallback('message', message => {
-                console.log(bot.status);
                 if (message.author !== bot.user) {
                     var msgid = RED.util.generateId();
                     var msg = {_msgid:msgid}
