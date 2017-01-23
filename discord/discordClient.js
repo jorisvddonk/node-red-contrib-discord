@@ -6,11 +6,11 @@ module.exports = function(RED) {
         var configNode = RED.nodes.getNode(config.token);
         var node = this;
         discordBotManager.getBot(configNode).then(function(bot){
-            this.on('input', function(msg) {
+            node.on('input', function(msg) {
                 msg.discord = bot;
                 node.send(msg);
             });
-            this.on('close', function() {
+            node.on('close', function() {
                 discordBotManager.closeBot(bot);
             });            
         });
