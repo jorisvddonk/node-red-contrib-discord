@@ -17,8 +17,7 @@ module.exports = function(RED) {
                 var msg = {_msgid:msgid}
                 msg.payload = message.content;
                 msg.channel = message.channel.id;
-                msg.discord_message = message;
-                msg.discord = bot;
+                msg.author = message.author.id;
                 node.send(msg);                
             }
         });

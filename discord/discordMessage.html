@@ -27,9 +27,7 @@
 <script type="text/x-red" data-help-name="discordMessage">
     <p>Triggers whenever a message was received on Discord.</p>
     <p><code>msg.payload</code> will be set to the textual content of the message.</p>
-    <p><code>msg.discord_message</code> will be set to the actual message as received on Discord. It will be an instance of a <a href="https://discord.js.org/#/docs/main/stable/class/Message" target="_blank">Discord.js message</a>.</p>
-    <p><code>msg.channel</code> will be set to the channelID of the channel the message was received on.</p>
-    <p><code>msg.discord</code> will be set to the Discord.js <a href="https://discord.js.org/#/docs/main/stable/class/Client" target="_blank">Client</a> that received the message.</p>
-    <p>To reply to a message with a @mention, use <code>msg.discord_message.reply('you rock!')</code></p>
-    <p>To reply to a message without a @mention, use <code>msg.discord_message.channel.send('you rock!')</code> or the <code>discordSendMessage</code> node.</p>
+    <p><code>msg.channel</code> will be set to the ID of the <a href="https://discord.js.org/#/docs/main/stable/class/Channel" target="_blank">channel</a> the message was received on.</p>
+    <p><code>msg.author</code> will be set to the ID of the <a href="https://discord.js.org/#/docs/main/stable/class/User" target="_blank">user</a> that sent the message.</p>
+    <p>To reply to a message without a @mention, use the <code>discordSendMessage</code> node.</p>
 </script>
