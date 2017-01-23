@@ -1,0 +1,35 @@
+<script type="text/javascript">
+    RED.nodes.registerType('discordMessage',{
+        category: 'discord',
+        color: '#7289da',
+        defaults: {
+            name: {value: "", required: false},
+            token: {value: "", required: true, type: "discord-token"}
+        },
+        inputs:0,
+        outputs:1,
+        icon: "discord.png",
+        label: function() {
+            return this.name||"discordMessage";
+        }
+    });
+</script>
+<script type="text/x-red" data-template-name="discordMessage">
+    <div class="form-row">
+        <label for="node-input-token"><i class="icon-tag"></i> token</label>
+        <input type="text" id="node-input-token" placeholder="token">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+<script type="text/x-red" data-help-name="discordMessage">
+    <p>Triggers whenever a message was received on Discord.</p>
+    <p><code>msg.payload</code> will be set to the textual content of the message.</p>
+    <p><code>msg.discord_message</code> will be set to the actual message as received on Discord. It will be an instance of a <a href="https://discord.js.org/#/docs/main/stable/class/Message" target="_blank">Discord.js message</a>.</p>
+    <p><code>msg.channel</code> will be set to the channelID of the channel the message was received on.</p>
+    <p><code>msg.discord</code> will be set to the Discord.js <a href="https://discord.js.org/#/docs/main/stable/class/Client" target="_blank">Client</a> that received the message.</p>
+    <p>To reply to a message with a @mention, use <code>msg.discord_message.reply('you rock!')</code></p>
+    <p>To reply to a message without a @mention, use <code>msg.discord_message.channel.send('you rock!')</code> or the <code>discordSendMessage</code> node.</p>
+</script>

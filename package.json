@@ -12,8 +12,11 @@
     "discord.js": "^11.0.0"
   },
   "node-red": {
-      "nodes": {
-          "discord": "discord/discord.js"
-      }
+    "nodes": {
+      "discord-token": "discord/discord-token.js",
+      "discordMessage": "discord/discordMessage.js",
+      "discordSendMessage": "discord/discordSendMessage.js",
+      "discordClient": "discord/discordClient.js"
+    }
   }
 }
