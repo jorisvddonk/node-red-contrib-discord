@@ -1,22 +1,32 @@
 const Discord = require('discord.js');
 var bots = new Map();
 var getBot = function(configNode) {
-    var bot = undefined;
-    if (bots.get(configNode) === undefined) {
-        bot = new Discord.Client();
-        bot.login(configNode.token);
-        bots.set(configNode, bot);
-    } else {
-        bot = bots.get(configNode);
-    }
-    bot.numReferences = (bot.numReferences || 0) + 1;
-    return bot;
+    var promise = new Promise(function(resolve, reject) {
+        var bot = undefined;
+        if (bots.get(configNode) === undefined) {
+            bot = new Discord.Client();
+            bot.login(configNode.token).then(function(){
+                bots.set(configNode, bot);
+                bot.numReferences = (bot.numReferences || 0) + 1;
+                resolve(bot);
+            }).catch(function(err){
+                reject(err);
+            });
+        } else {
+            bot = bots.get(configNode);
+            bot.numReferences = (bot.numReferences || 0) + 1;
+            resolve(bot);
+        }
+    });
+    return promise;
 };
 var closeBot = function(bot) {
     bot.numReferences -= 1;
     setTimeout(function(){
         if (bot.numReferences === 0) {
-            bot.destroy();
+            try {
+                bot.destroy(); // if a bot is not connected, destroy() won't work, so let's just wrap it in a try-catch..
+            } catch (e) {}
             for (var i of bots.entries()) {
                 if (i[1] === bot) {
                     bots.delete(i[0]);
