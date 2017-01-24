@@ -1,12 +1,13 @@
 module.exports = function(RED) {
+    var i = 0;
     var discordBotManager = require('./lib/discordBotManager.js');
 
     function discordMessage(config) {
         RED.nodes.createNode(this, config);
         var configNode = RED.nodes.getNode(config.token);
         var node = this;        
-        var callbacks = [];
         discordBotManager.getBot(configNode).then(function(bot){
+            var callbacks = [];
             node.status({fill:"green", shape:"dot", text:"ready"});
 
             var registerCallback = function(eventName, listener) {
