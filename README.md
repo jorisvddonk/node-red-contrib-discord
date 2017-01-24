@@ -1,8 +1,22 @@
 # node-red-contrib-discord
 
 Node-red nodes that allow you to interact with Discord, via [Discord.js](https://discord.js.org).
-
 Currently, you can write simple request-reply bots with this.
+Though node-red-contrib-discord is production ready for small bots, it's a new project that might be difficult to use for those unfamiliar with Discord.js. It also hasn't been used yet for large Discord bot deployments.
+
+# Installation
+
+Run the following command in `~/.node-red`:
+
+    npm install node-red-contrib-discord
+
+# Nodes
+
+node-red-contrib-discord gives you access to three nodes:
+
+* discordMessage is a node with no inputs and one output allowing you to receive notifications of incoming messages.
+* discordSendMessage is a node with one input and no outputs allowing you to send messages to a Discord channel (this includes private message channels, as well).
+* discordClient is an advanced deprecated node with one input and one output allowing you to inject a references to a [Discord.js Client](https://discord.js.org/#/docs/main/stable/class/Client) into a message. This node can cause node-red to crash if you use it improperly, so take caution. Messages containing a Discord.js Client reference can *not* be forked (e.g. sent to two nodes), so you'll have to manually remove the reference to the Client via a function node using `delete msg.discord`.
 
 # Discord.js client sharing
 
