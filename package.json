@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-discord",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Node-RED node for interacting with Discord",
   "main": "discord/discord.js",
   "scripts": {
