@@ -15,6 +15,7 @@
     "url" : "https://github.com/jorisvddonk/node-red-contrib-discord/issues"
   },
   "repository": "jorisvddonk/node-red-contrib-discord",
+  "keywords": ["node-red"],
   "node-red": {
     "nodes": {
       "discord-token": "discord/discord-token.js",
