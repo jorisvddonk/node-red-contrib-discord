@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-discord",
-  "version": "2.0.2",
+  "version": "3.0.0",
   "description": "Node-RED node for interacting with Discord",
   "main": "discord/discord.js",
   "scripts": {
@@ -12,10 +12,12 @@
     "discord.js": "^11.0.0"
   },
   "bugs": {
-    "url" : "https://github.com/jorisvddonk/node-red-contrib-discord/issues"
+    "url": "https://github.com/jorisvddonk/node-red-contrib-discord/issues"
   },
   "repository": "jorisvddonk/node-red-contrib-discord",
-  "keywords": ["node-red"],
+  "keywords": [
+    "node-red"
+  ],
   "node-red": {
     "nodes": {
       "discord-token": "discord/discord-token.js",
