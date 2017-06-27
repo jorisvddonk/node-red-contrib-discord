@@ -27,8 +27,7 @@
 <script type="text/x-red" data-help-name="discordMessage">
     <p>Triggers whenever a message was received on Discord.</p>
     <p><code>msg.payload</code> will be set to the textual content of the message.</p>
-    <p><code>msg.channel</code> will be set to the <a href="https://discord.js.org/#/docs/main/stable/class/Channel" target="_blank">channel</a> the message was received on, but without any of the functions (the type is Object, not Discord.js's Channel type).</p>
-    <p><code>msg.author</code> will be set to the <a href="https://discord.js.org/#/docs/main/stable/class/User" target="_blank">user</a> that sent the message, but without any of the functions (the type is Object, not Discord.js's User type).</p>
-    <p><code>msg.data</code> <em>may</em> be set to the <a href="https://discord.js.org/#/docs/main/stable/class/Message" target="_blank">message</a> that was received, but again without any of the functions attached to it.</p>
+    <p><code>msg.channel</code> will be set to the <a href="https://discord.js.org/#/docs/main/stable/class/Channel" target="_blank">channel</a>ID of the channel the message was received on.</p>
+    <p><code>msg.author</code> will be set to the <a href="https://discord.js.org/#/docs/main/stable/class/User" target="_blank">user</a>ID of the user that sent the message.</p>
     <p>To reply to a message without a @mention, use the <code>discordSendMessage</code> node.</p>
 </script>

@@ -16,11 +16,17 @@ module.exports = function(RED) {
                     }
                 }
                 if (channel) {
-                    bot.channels.get(channel).send(msg.payload).then(function(){
-                        node.status({fill:"green", shape:"dot", text:"message sent"});
-                    }).catch(function(){
+                    var channelInstance = bot.channels.get(channel);
+                    if (channelInstance) {
+                        channelInstance.send(msg.payload).then(function(){
+                            node.status({fill:"green", shape:"dot", text:"message sent"});
+                        }).catch(function(){
+                            node.status({fill:"red", shape:"dot", text:"send error"});
+                        });
+                    } else {
+                        node.error(`Couldn't send to channel '${channel}': channel not found.`);
                         node.status({fill:"red", shape:"dot", text:"error"});
-                    });
+                    }
                 }
             });
             node.on('close', function() {

@@ -23,7 +23,7 @@
     <div class="form-row">
         <label for="node-input-channel"><i class="icon-tag"></i> channel ID</label>
         <input type="text" id="node-input-channel" placeholder="channel">
-        <p>(leave 'channel ID' blank to use <code>msg.channel</code>)
+        <p>(leave 'channel ID' blank to use <code>msg.channel</code> as channel ID to send to)
     </div>
     <div class="form-row">
         <label for="node-input-name"><i class="icon-tag"></i> Name</label>
@@ -31,5 +31,5 @@
     </div>
 </script>
 <script type="text/x-red" data-help-name="discordSendMessage">
-    <p>Sends msg.payload on Discord channel with id <code>msg.channel.id</code> or <code>msg.channel</code></p>
+    <p>Sends msg.payload on Discord channel with id <code>msg.channel</code></p>
 </script>

@@ -19,14 +19,9 @@ module.exports = function(RED) {
                     var msgid = RED.util.generateId();
                     var msg = {_msgid:msgid}
                     msg.payload = message.content;
-                    msg.channel = JSON.parse(JSON.stringify(message.channel));
-                    msg.author = JSON.parse(JSON.stringify(message.author));
-                    try {
-                        msg.data = JSON.parse(JSON.stringify(message));
-                    } catch (e) {
-                        node.warn("Could not set `msg.data`: JSON serialization failed");
-                    }
-                    node.send(msg);                
+                    msg.channel = message.channel.id;
+                    msg.author = message.author.id;
+                    node.send(msg);
                 }
             });
             registerCallback('error', error => {
