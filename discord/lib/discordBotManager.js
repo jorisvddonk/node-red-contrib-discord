@@ -5,9 +5,9 @@ var getBot = function(configNode) {
         var bot = undefined;
         if (bots.get(configNode) === undefined) {
             bot = new Discord.Client();
+            bots.set(configNode, bot);
+            bot.numReferences = (bot.numReferences || 0) + 1;
             bot.login(configNode.token).then(function(){
-                bots.set(configNode, bot);
-                bot.numReferences = (bot.numReferences || 0) + 1;
                 resolve(bot);
             }).catch(function(err){
                 reject(err);
