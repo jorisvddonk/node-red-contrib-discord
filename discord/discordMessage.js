@@ -21,6 +21,7 @@ module.exports = function(RED) {
                     msg.payload = message.content;
                     msg.channel = message.channel.id;
                     msg.author = message.author.id;
+                    msg.username = message.author.username;
                     node.send(msg);
                 }
             });
