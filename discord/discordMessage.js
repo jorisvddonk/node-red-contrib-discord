@@ -21,6 +21,10 @@ module.exports = function(RED) {
                     msg.payload = message.content;
                     msg.channel = message.channel.id;
                     msg.author = message.author.id;
+                    msg.authorName = message.author.username;
+                    msg.authorTag = message.author.tag;
+                    msg.authorRoles = [];
+                    message.member.roles.array().forEach(function(item) { msg.authorRoles.push(item.name);});
                     node.send(msg);
                 }
             });
