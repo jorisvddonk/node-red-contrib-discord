@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.0.2
+
+* Added `msg.member` and `msg.memberRoleNames` to messages.
+
 ## 4.0.1
 
 * Added ability to send attachments. Simply set `msg.attachment` to a path to a local file or public URL to add it as an attachment to a message.
