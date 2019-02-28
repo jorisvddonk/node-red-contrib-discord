@@ -1,6 +1,6 @@
 module.exports = function(RED) {
     var discordBotManager = require('./lib/discordBotManager.js');
-
+    const { Attachment } = require('discord.js');
     function discordSendMessage(config) {
         RED.nodes.createNode(this, config);
         var node = this;
@@ -18,9 +18,16 @@ module.exports = function(RED) {
                 if (channel) {
                     var channelInstance = bot.channels.get(channel);
                     if (channelInstance) {
-                        channelInstance.send(msg.payload).then(function(){
+
+                        let attachment = null;
+                        if(msg.attachment) {
+                            attachment = new Attachment(msg.attachment);
+                        }
+
+                        channelInstance.send(msg.payload,attachment).then(function(){
                             node.status({fill:"green", shape:"dot", text:"message sent"});
-                        }).catch(function(){
+                        }).catch(function(err){
+                            node.error("Couldn't send to channel:" + err);
                             node.status({fill:"red", shape:"dot", text:"send error"});
                         });
                     } else {
