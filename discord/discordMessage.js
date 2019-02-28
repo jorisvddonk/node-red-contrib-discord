@@ -1,3 +1,4 @@
+const Flatted = require('flatted/cjs');
 module.exports = function(RED) {
     var i = 0;
     var discordBotManager = require('./lib/discordBotManager.js');
@@ -19,8 +20,13 @@ module.exports = function(RED) {
                     var msgid = RED.util.generateId();
                     var msg = {_msgid:msgid}
                     msg.payload = message.content;
-                    msg.channel = message.channel.id;
-                    msg.author = message.author.id;
+                    msg.channel = Flatted.parse(Flatted.stringify(message.channel));
+                    msg.author = Flatted.parse(Flatted.stringify(message.author));
+                    try {
+                        msg.data = Flatted.parse(Flatted.stringify(message));
+                    } catch (e) {
+                        node.warn("Could not set `msg.data`: JSON serialization failed");
+                    }
                     node.send(msg);
                 }
             });

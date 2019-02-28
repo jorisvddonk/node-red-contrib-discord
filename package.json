@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-discord",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Node-RED node for interacting with Discord",
   "main": "discord/discord.js",
   "scripts": {
@@ -9,7 +9,8 @@
   "author": "Joris van de Donk <jorisvddonk@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "discord.js": "^11.0.0"
+    "discord.js": "^11.0.0",
+    "flatted": "^2.0.0"
   },
   "bugs": {
     "url": "https://github.com/jorisvddonk/node-red-contrib-discord/issues"
