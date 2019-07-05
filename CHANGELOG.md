@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.0.3
+
+* Fixed exception occurring when a DM is received from a user.
+
 ## 4.0.2
 
 * Added `msg.member` and `msg.memberRoleNames` to messages.
