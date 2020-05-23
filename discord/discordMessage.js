@@ -23,6 +23,7 @@ module.exports = function(RED) {
                     msg.channel = Flatted.parse(Flatted.stringify(message.channel));
                     msg.author = Flatted.parse(Flatted.stringify(message.author));
                     msg.member = Flatted.parse(Flatted.stringify(message.member));
+                    msg.attachment = message.attachments.array()[0].url;
                     msg.memberRoleNames = message.member ? message.member.roles.array().map(function(item) {return item.name}) : null;
                     try {
                         msg.data = Flatted.parse(Flatted.stringify(message));
