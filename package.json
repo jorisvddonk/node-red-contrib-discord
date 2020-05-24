@@ -24,7 +24,8 @@
       "discord-token": "discord/discord-token.js",
       "discordMessage": "discord/discordMessage.js",
       "discordSendMessage": "discord/discordSendMessage.js",
-      "discordClient": "discord/discordClient.js"
+      "discordClient": "discord/discordClient.js",
+      "discordDeleteMessage": "discord/discordDeleteMessage.js"
     }
   }
 }
