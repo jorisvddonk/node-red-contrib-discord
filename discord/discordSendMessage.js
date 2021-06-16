@@ -10,36 +10,22 @@ module.exports = function (RED) {
     var configNode = RED.nodes.getNode(config.token);
     discordBotManager.getBot(configNode).then(function (bot) {
       node.on('input', function (msg) {
-        var msgId = msg.id;
-        if (msgId && typeof msgId !== 'string') {
-          if (msgId.hasOwnProperty('id')) {
-            msgId = msgId.id;
-          } else {
-            msgId = undefined;
-          }
-        }
+        var msgId = undefined || msg.id;
 
         var channel = config.channel || msg.channel;
-        if (channel && typeof channel !== 'string') {
-          if (channel.hasOwnProperty('id')) {
-            channel = channel.id;
-          } else {
-            channel = undefined;
-          }
+        if (!channel) {
+          channel = undefined;
         }
 
+        // let attachment = null;
+        // if (msg.attachment) {
+        //   attachment = new Attachment(msg.attachment);
+        // }
+
         if (channel) {
-          var channelInstance = bot.channels.get(channel);
-          if (channelInstance) {
-
-            let attachment = null;
-            if (msg.attachment) {
-              attachment = new Attachment(msg.attachment);
-            }
-
+          bot.channels.fetch(channel).then((channelInstance) => {
             if (msgId) {
-              const message = channel.fetchMessage(msgId);
-              if (message) {
+              channelInstance.messages.fetch(msgId).then(message => {
                 message.edit(msg.payload).then(function () {
                   node.status({
                     fill: "green",
@@ -47,23 +33,23 @@ module.exports = function (RED) {
                     text: "message sent"
                   });
                 }).catch(function (err) {
-                  node.error("Couldn't send to channel:" + err);
+                  node.error("Couldn't edit message:" + err);
                   node.status({
                     fill: "red",
                     shape: "dot",
                     text: "send error"
                   });
                 });
-              } else {
-                node.error(`Couldn't edit message: Message not found.`);
+              }).catch(error => {
+                node.error(`Something went wrong: ${error}`);
                 node.status({
                   fill: "red",
                   shape: "dot",
-                  text: "error"
+                  text: "send error"
                 });
-              };
+              });
             } else {
-              channelInstance.send(msg.payload, attachment).then(function () {
+              channelInstance.send(msg.payload).then(function () {
                 node.status({
                   fill: "green",
                   shape: "dot",
@@ -78,18 +64,19 @@ module.exports = function (RED) {
                 });
               });
             };
-          } else {
-            node.error(`Couldn't send to channel '${channel}': channel not found.`);
+          }).catch(error => {
+            node.error(`Something went wrong: ${error}`);
             node.status({
               fill: "red",
               shape: "dot",
-              text: "error"
+              text: error
             });
-          }
-        }
-      });
-      node.on('close', function () {
-        discordBotManager.closeBot(bot);
+          })
+        };
+
+        node.on('close', function () {
+          discordBotManager.closeBot(bot);
+        });
       });
     });
   }
