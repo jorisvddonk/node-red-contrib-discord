@@ -9,8 +9,8 @@
   "author": "Joris van de Donk <jorisvddonk@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "discord.js": "^11.0.0",
-    "flatted": "^2.0.0"
+    "discord.js": "^12.5.3",
+    "flatted": "^3.1.1"
   },
   "bugs": {
     "url": "https://github.com/jorisvddonk/node-red-contrib-discord/issues"
@@ -24,6 +24,7 @@
       "discord-token": "discord/discord-token.js",
       "discordMessage": "discord/discordMessage.js",
       "discordSendMessage": "discord/discordSendMessage.js",
+      "discordEditMessage": "discord/discordEditMessage.js",
       "discordClient": "discord/discordClient.js"
     }
   }
