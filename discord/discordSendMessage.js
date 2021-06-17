@@ -1,7 +1,7 @@
 module.exports = function (RED) {
   var discordBotManager = require('./lib/discordBotManager.js');
   const {
-    Attachment
+    MessageAttachment
   } = require('discord.js');
 
   function discordSendMessage(config) {
@@ -17,10 +17,10 @@ module.exports = function (RED) {
           channel = undefined;
         }
 
-        // let attachment = null;
-        // if (msg.attachment) {
-        //   attachment = new Attachment(msg.attachment);
-        // }
+        let attachment = null;
+        if (msg.attachment) {
+          attachment = new MessageAttachment(msg.attachment);
+        }
 
         if (channel) {
           bot.channels.fetch(channel).then((channelInstance) => {
@@ -37,19 +37,19 @@ module.exports = function (RED) {
                   node.status({
                     fill: "red",
                     shape: "dot",
-                    text: "send error"
+                    text: "Error while editing message"
                   });
                 });
               }).catch(error => {
-                node.error(`Something went wrong: ${error}`);
+                node.error(`Couldn't find the message: ${error}`);
                 node.status({
                   fill: "red",
                   shape: "dot",
-                  text: "send error"
+                  text: "Couldn't find supplied message with supplied message ID"
                 });
               });
             } else {
-              channelInstance.send(msg.payload).then(function () {
+              channelInstance.send(msg.payload, attachment).then(function () {
                 node.status({
                   fill: "green",
                   shape: "dot",
@@ -65,11 +65,11 @@ module.exports = function (RED) {
               });
             };
           }).catch(error => {
-            node.error(`Something went wrong: ${error}`);
+            node.error(`Couldn't find the supplied channel ID: ${error}`);
             node.status({
               fill: "red",
               shape: "dot",
-              text: error
+              text: `Couldn't find channel with the supplied channel ID...`
             });
           })
         };
