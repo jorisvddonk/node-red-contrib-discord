@@ -10,7 +10,6 @@ module.exports = function (RED) {
         const msgId = msg.id;
         const channelId = msg.channel;
         const timeDelay = msg.timedelay || 0;
-        console.log(timeDelay);
 
         bot.channels.fetch(channelId).then((channelInstance) => {
           channelInstance.messages.fetch(msgId).then(message => {
