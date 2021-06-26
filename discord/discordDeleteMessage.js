@@ -78,7 +78,7 @@ module.exports = function (RED) {
             });
           });
         }).catch(error => {
-          node.error(error);
+          node.error(`Couldn't find channel: ${error}`);
           node.status({
             fill: "red",
             shape: "dot",

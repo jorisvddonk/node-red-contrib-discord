@@ -93,7 +93,7 @@ module.exports = function (RED) {
               node.status({
                 fill: "red",
                 shape: "dot",
-                text: "send error"
+                text: "Couldn't send message to the channel."
               });
             });
           };
