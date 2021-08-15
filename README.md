@@ -1,5 +1,7 @@
 # node-red-contrib-discord
 
+**This project is deprecated and no longer maintained actively. Consider migrating to [node-red-contrib-discord-advanced](https://github.com/Markoudstaal/node-red-contrib-discord-advanced).**
+
 Node-red nodes that allow you to interact with Discord, via [Discord.js](https://discord.js.org).
 Currently, you can write simple request-reply bots with this.
 Though node-red-contrib-discord is production ready for small bots, it's a new project that might be difficult to use for those unfamiliar with Discord.js. It also hasn't been used yet for large Discord bot deployments.
