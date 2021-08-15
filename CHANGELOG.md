@@ -1,5 +1,12 @@
 # Changelog
 
+## 5.0
+
+* Updated the code base to use DiscordJS V12.
+* Added discordDeleteMessage with the ability to delete existing discord messages.
+* Added ability to edit messages by providing a message id to the discordSendMessage node.
+* Updated node documentation.
+
 ## 4.0.3
 
 * Fixed exception occurring when a DM is received from a user.
