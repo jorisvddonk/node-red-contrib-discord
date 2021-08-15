@@ -48,13 +48,9 @@ module.exports = function (RED) {
           }
         }
 
-        const timeDelay = msg.timedelay || 0;
-
         bot.channels.fetch(channel).then((channelInstance) => {
           channelInstance.messages.fetch(msgId).then(message => {
-            message.delete({
-              timeout: timeDelay
-            }).then(deletedMessage => {
+            message.delete({}).then(deletedMessage => {
               node.status({
                 fill: "green",
                 shape: "dot",
