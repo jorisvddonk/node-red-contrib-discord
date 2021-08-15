@@ -2,7 +2,7 @@
 
 ## 5.0
 
-* Updated the code base to use DiscordJS V12.
+* BREAKING CHANGE: Updated the code base to use DiscordJS V12. This is a breaking change for users of the `discordClient` node. See [the Discord.js upgrade documentation](https://v12.discordjs.guide/additional-info/changes-in-v12.html) for information on how to migrate your own code that uses `discordClient`.
 * Added discordDeleteMessage with the ability to delete existing discord messages.
 * Added ability to edit messages by providing a message id to the discordSendMessage node.
 * Updated node documentation.
