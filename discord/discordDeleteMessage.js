@@ -7,12 +7,13 @@ module.exports = function (RED) {
     var configNode = RED.nodes.getNode(config.token);
     discordBotManager.getBot(configNode).then(function (bot) {
       node.on('input', function (msg) {
-        if (!msg.id || !msg.channel) {
-          node.error(`Either msg.id or msg.channel wasn't set`);
+        var channel = config.channel || msg.channel;
+        if (!msg.id || !channel) {
+          node.error(`Either msg.id or config/msg.channel wasn't set`);
           node.status({
             fill: "red",
             shape: "dot",
-            text: `msg.id and msg.channel are required`
+            text: `msg.id and config/msg.channel are required`
           })
           return;
         }
@@ -32,17 +33,16 @@ module.exports = function (RED) {
           }
         }
 
-        var channel = msg.channel;
         if (channel && typeof channel !== 'string') {
           if (channel.hasOwnProperty('id')) {
             channel = channel.id;
           } else {
             channel = undefined;
-            node.error(`msg.channel needs to be either a string for the id or channel Object`);
+            node.error(`channel needs to be either a string for the id or channel Object`);
             node.status({
               fill: "red",
               shape: "dot",
-              text: `msg.channel is not a string or Object`
+              text: `channel is not a string or Object`
             })
             return;
           }
