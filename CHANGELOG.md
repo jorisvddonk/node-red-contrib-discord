@@ -1,6 +1,6 @@
 # Changelog
 
-## 4.1
+## 5.0
 
 * Updated the code base to use DiscordJS V12.
 * Added discordDeleteMessage with the ability to delete existing discord messages.

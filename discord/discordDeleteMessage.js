@@ -20,9 +20,8 @@ module.exports = function (RED) {
         var msgId = msg.id;
         if (msgId && typeof msgId !== 'string') {
           if (msgId.hasOwnProperty('id')) {
-            msgId = msgID.id;
+            msgId = msgId.id;
           } else {
-            msgId = undefined;
             node.error(`msg.Id needs to be either a string for the id or channel Object`);
             node.status({
               fill: "red",

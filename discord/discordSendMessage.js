@@ -35,7 +35,7 @@ module.exports = function (RED) {
           }
         }
 
-        var msgId = undefined || msg.id;
+        var msgId = msg.id;
         if (msgId && typeof msgId !== 'string') {
           if (msgId.hasOwnProperty('id')) {
             msgId = msgID.id;
